@@ -1,6 +1,7 @@
 import numpy as np
 from numpy.linalg import inv
 
+######### Replace the data below ################
 X = np.array([
     [1, -7],
     [1, -5],
@@ -18,6 +19,7 @@ y = np.array([
 Xt = np.array([
     [1, -2]
     ])
+######### Replace the data above ################
 
 ## Linear Regression for classification
 w = inv(X.T @ X) @ X.T @ y

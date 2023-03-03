@@ -3,7 +3,7 @@ This file is used to calculate the polynomial features.
 Refer to lecture 6 slides
 """
 import numpy as np
-from numpy.linalg import inv, matrix_rank
+from numpy.linalg import inv
 from sklearn.preprocessing import PolynomialFeatures
 
 ######### Replace the data below ################
