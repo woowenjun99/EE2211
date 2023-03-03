@@ -2,6 +2,24 @@ import numpy as np
 from numpy.linalg import inv
 from sklearn.linear_model import LinearRegression
 
+######### Replace the data below ################
+X = np.array([
+    [-10], 
+    [-8], 
+    [-3], 
+    [-1], 
+    [2], 
+    [8]
+    ])
+Y = np.array([
+    [5], 
+    [5], 
+    [4], 
+    [3], 
+    [2], 
+    [2]])
+######### Replace the data above ################
+
 def calculate_weight(X: np.array, Y: np.array):
     """
     Used to compute the weight vector for Linear Regression
@@ -28,8 +46,7 @@ def calculate_weight_and_bias(X: np.array, Y: np.array):
     bias = multi_model.intercept_
     return weight, bias
 
-X = np.array([[-10], [-8], [-3], [-1], [2], [8]])
-Y = np.array([[5], [5], [4], [3], [2], [2]])
+
 weight = calculate_weight(X, Y)
 (w, coeff) = calculate_weight_and_bias(X, Y)
 print(weight)
