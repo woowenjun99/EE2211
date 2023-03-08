@@ -100,10 +100,7 @@ def A2_MatricNumber(enable_visualization=True): # DO NOT modify the parameter en
 
     encoder = OneHotEncoder(sparse=False)
     Y_train_onehot = encoder.fit_transform([[x + 1] for x in Y_train])
-    Y_test_onehot = encoder.fit_transform([[x + 1] for x in Y_test])    
-    # print("Before onehot encoding:", Y_train[0])
-    # print("After onehot encoding: ", Y_train_onehot[0])    
-    # print("After onehot encoding:", Y_train_onehot[0])
+    Y_test_onehot = encoder.fit_transform([[x + 1] for x in Y_test])
     
     #######################################################################################################
     # End of your code for task 2
@@ -141,10 +138,16 @@ def A2_MatricNumber(enable_visualization=True): # DO NOT modify the parameter en
         #       need to find the best classifier according to the accuracy.
         ########################################################################################################
 
-        model = Ridge()
-        # constant = 0.0001
-        # wp = np.linalg.inv(X_train.T @ X + constant) @ X_train.T @ Y_train_onehot    
-        # wp = ...
+        alpha = 0.0001
+        P_train = np.array(P_train)
+        num_rows, num_cols = P_train.shape
+        wp = None
+        if num_rows <= num_cols:
+            wp = P_train.T @ np.linalg.inv(P_train @ P_train.T + alpha * (np.identity(num_rows))) @ Y_train_onehot
+        else:
+            wp = np.linalg.inv(P_train.T @ P_train + alpha * (np.identity(num_cols))) @ P_train.T @ Y_train_onehot
+
+        print(wp)
 
         #train_acc = ...
         #print("Training Accuracy: ", train_acc)
